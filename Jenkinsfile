@@ -17,9 +17,7 @@ pipeline {
         stage('Publish Docker image') {
             steps {
                 withDockerRegistry("${REGISTRY_CREDENTIALSID}") {
-                    script {
-                        docker.image("${IMAGE_NAME}").push('latest')
-                    }
+                    docker.image("${IMAGE_NAME}").push('latest')
                 }
             }
         }
