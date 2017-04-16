@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'docker' }
     environment {
-        IMAGE_NAME = "pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}",
+        IMAGE_NAME = "pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}"
         REGISTRY_URL = 'https://index.docker.io/v1/'
         REGISTRY_CREDENTIALSID = 'docker-registry-pdahlstrom'
     }
