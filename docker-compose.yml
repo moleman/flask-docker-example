@@ -4,8 +4,6 @@ services:
     image: pdahlstrom/flask-docker-example:latest
     ports:
       - 5000:5000
-    volumes:
-      - .:/app
     links:
       - redis
   
