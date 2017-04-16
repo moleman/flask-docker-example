@@ -28,8 +28,15 @@ pipeline {
             agent { 
                 docker { image 'identt/rancher-compose:0.12.4' }
             }
+            
+            environment {
+                RANCHER_URL = 'http://109.74.14.162:8080/'
+                RANCHER_ACCESS_KEY = credentials('RANCHER_ACCESS_KEY')
+                RANCHER_SECRET_KEY = credentials('RANCHER_SECRET_KEY')
+            }
+
             steps {
-                sh 'rancher-compose --version'
+                sh 'rancher-compose upgrade'
             }
         }
     }
