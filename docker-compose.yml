@@ -7,9 +7,9 @@ services:
     links:
       - redis
     labels:
-      io.rancher.scheduler.affinity:host_label:: host=host1
+      io.rancher.scheduler.affinity:host_label: host=host1
   
   redis:
     image: redis
     labels:
-      io.rancher.scheduler.affinity:host_label:: host=host1
+      io.rancher.scheduler.affinity:host_label: host=host1
