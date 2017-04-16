@@ -1,0 +1,6 @@
+version: '2'
+services:
+  web:
+    image: pdahlstrom/flask-docker-example:latest
+    ports:
+      - 5000:5000
