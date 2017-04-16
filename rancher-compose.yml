@@ -3,10 +3,4 @@ services:
   web:
     upgrade_strategy:
       start_first: true
-    labels:
-      io.rancher.scheduler.affinity:host_label:: host=host1
     scale: 2
-  
-  redis:
-    labels:
-      io.rancher.scheduler.affinity:host_label:: host=host1
