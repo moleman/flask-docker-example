@@ -28,7 +28,7 @@ pipeline {
             when {
                 branch 'master'
             }
-            
+
             agent { 
                 docker { image 'identt/rancher-compose:0.12.4' }
             }
@@ -41,7 +41,7 @@ pipeline {
             }
 
             steps {
-                sh 'rancher-compose up --upgrade --pull -d --confirm-upgrade'
+                sh 'rancher-compose up --upgrade --force-upgrade --verbose --pull -d'
             }
         }
     }
