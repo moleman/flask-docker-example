@@ -1,19 +1,20 @@
 pipeline {
-    agent { dockerfile true }
+    agent { label 'docker' }
 
     stages{
         stage('Build and publish Docker image') {
             steps {
                 script {
-                    def app = docker.build 'pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}'
+                    def app = docker.build "pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}"
                     app.push 'latest'
                 }
             }
         }
 
         stage('Deploy') {
+            agent { 'identt/rancher-compose:0.12.4' }
             steps {
-                sh 'echo Deploy'
+                sh 'rancher-compose --version'
             }
         }
     }
