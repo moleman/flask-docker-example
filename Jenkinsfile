@@ -12,7 +12,9 @@ pipeline {
         }
 
         stage('Deploy') {
-            agent { 'identt/rancher-compose:0.12.4' }
+            agent { 
+                docker { image 'identt/rancher-compose:0.12.4' }
+            }
             steps {
                 sh 'rancher-compose --version'
             }
