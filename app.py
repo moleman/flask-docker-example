@@ -1,9 +1,13 @@
 from flask import Flask
+from redis import Redis
+
 app = Flask(__name__)
+redis = Redis(host='redis', port=6379)
 
 @app.route('/')
 def hello_world():
-    return 'Hey, we have Flask in a Docker container! Test 2'
+    redis.incr('hits')
+    return 'Hey, we have Flask in a Docker container! Hits: %s' % redis.get('hits')
 
 
 if __name__ == '__main__':
