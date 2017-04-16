@@ -25,6 +25,10 @@ pipeline {
         }
 
         stage('Deploy') {
+            when {
+                branch 'master'
+            }
+            
             agent { 
                 docker { image 'identt/rancher-compose:0.12.4' }
             }
