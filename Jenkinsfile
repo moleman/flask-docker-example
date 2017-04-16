@@ -4,8 +4,10 @@ pipeline {
     stages{
         stage('Build and publish Docker image') {
             steps {
-                def app = docker.build 'pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}'
-                app.push 'latest'
+                step {
+                    def app = docker.build 'pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}'
+                    app.push 'latest'
+                }
             }
         }
 
