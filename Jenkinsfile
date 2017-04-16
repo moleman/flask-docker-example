@@ -7,6 +7,10 @@ pipeline {
     }
 
     stages{
+        stage('Run tests') {
+            sh 'echo "Run tests"'
+        }
+
         stage('Build Docker image') {
             steps {
                 script {
@@ -14,6 +18,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Publish Docker image') {
             steps {
                 withDockerRegistry([url: "${REGISTRY_URL}", credentialsId: "${REGISTRY_CREDENTIALSID}"]) {
