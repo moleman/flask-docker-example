@@ -8,7 +8,12 @@ pipeline {
 
     stages{
         stage('Run tests') {
-            sh 'echo "Run tests"'
+            agent { dockerfile true }
+
+            steps {
+                sh 'echo "Run tests"'
+                sh 'python --version'
+            }
         }
 
         stage('Build Docker image') {
@@ -18,7 +23,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Publish Docker image') {
             steps {
                 withDockerRegistry([url: "${REGISTRY_URL}", credentialsId: "${REGISTRY_CREDENTIALSID}"]) {
