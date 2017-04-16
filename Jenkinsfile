@@ -41,7 +41,7 @@ pipeline {
             }
 
             steps {
-                sh 'rancher-compose --verbose up --upgrade --force-upgrade --pull -d'
+                sh 'rancher-compose --verbose up --upgrade --force-upgrade --pull -d --confirm-upgrade'
             }
         }
     }
