@@ -8,7 +8,7 @@ pipeline {
 
     stages{
         stage('Run tests') {
-            agent { dockerfile true }
+            //agent { dockerfile true }
 
             steps {
                 sh 'echo "Run tests"'
