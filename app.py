@@ -7,7 +7,7 @@ redis = Redis(host='redis', port=6379)
 @app.route('/')
 def hello_world():
     redis.incr('hits')
-    return 'Hey, we have Flask in a Docker container! Hits: %s' % redis.get('hits')
+    return 'Hey, we have Flask in a Docker container! TEST! Hits: %s' % redis.get('hits')
 
 
 if __name__ == '__main__':
