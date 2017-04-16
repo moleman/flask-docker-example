@@ -1,13 +1,24 @@
 pipeline {
     agent { label 'docker' }
+    environment {
+        IMAGE_NAME = "pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}",
+        REGISTRY_URL = 'https://index.docker.io/v1/'
+        REGISTRY_CREDENTIALSID = 'docker-registry-pdahlstrom'
+    }
 
     stages{
-        stage('Build and publish Docker image') {
+        stage('Build Docker image') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-registry-pdahlstrom') {
+                script {
+                    docker.build(${IMAGE_NAME})
+                }
+            }
+        }
+        stage('Publish Docker image') {
+            steps {
+                withDockerRegistry(${REGISTRY_URL}, ${REGISTRY_CREDENTIALSID}) {
                     script {
-                        def app = docker.build "pdahlstrom/flask-docker-example:${env.BUILD_NUMBER}"
-                        app.push 'latest'
+                        docker.image(${IMAGE_NAME}).push('latest')
                     }
                 }
             }
