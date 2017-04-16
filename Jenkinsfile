@@ -37,7 +37,8 @@ pipeline {
             }
 
             steps {
-                sh 'rancher-compose up --upgrade --pull -d'
+                sh 'rancher-compose up --upgrade --pull'
+                sh 'rancher-compose up --confirm-upgrade'
             }
         }
     }
