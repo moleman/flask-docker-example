@@ -10,15 +10,15 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    docker.build(${IMAGE_NAME})
+                    docker.build("${IMAGE_NAME}")
                 }
             }
         }
         stage('Publish Docker image') {
             steps {
-                withDockerRegistry(${REGISTRY_CREDENTIALSID}) {
+                withDockerRegistry("${REGISTRY_CREDENTIALSID}") {
                     script {
-                        docker.image(${IMAGE_NAME}).push('latest')
+                        docker.image("${IMAGE_NAME}").push('latest')
                     }
                 }
             }
