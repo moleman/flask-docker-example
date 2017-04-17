@@ -2,4 +2,5 @@
 #
 
 test:
-	docker-compose run --entrypoint python web app_tests.py
+	# TODO: Run this with docker-compose, both locally and in CI
+	python app_tests.py
