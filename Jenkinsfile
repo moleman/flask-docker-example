@@ -9,9 +9,19 @@ pipeline {
     stages{
         stage('Run tests') {
             agent { dockerfile true }
+            
+            environment {
+                NOSE_WITH_XUNIT = 1
+            }
 
             steps {
                 sh 'make test'
+            }
+
+            post {
+                always {
+                    junit 'nosetests.xml'
+                }
             }
         }
 
