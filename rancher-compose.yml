@@ -3,4 +3,4 @@ services:
   web:
     upgrade_strategy:
       start_first: true
-    scale: 1
+    scale: 2
