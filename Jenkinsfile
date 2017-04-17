@@ -11,8 +11,7 @@ pipeline {
             agent { dockerfile true }
 
             steps {
-                sh 'echo "Run tests"'
-                sh 'python --version'
+                sh 'make test'
             }
         }
 
