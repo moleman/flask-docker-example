@@ -4,6 +4,9 @@ services:
     build: .
     links:
       - redis
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_HOST=0.0.0.0
 
   redis:
     image: redis

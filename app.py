@@ -11,7 +11,3 @@ def hello_world():
     redis.incr('hits')
     return 'Hey, we have Flask in a Docker container! Host: %s. TEST 5!!!!! Hits: %s' % \
         (os.environ.get('HOSTNAME'), redis.get('hits'))
-
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
