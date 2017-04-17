@@ -1,15 +1,9 @@
 version: '2'
 services:
   web:
-    image: pdahlstrom/flask-docker-example:latest
-    ports:
-      - 5000:5000
+    build: .
     links:
       - redis
-    labels:
-      io.rancher.scheduler.affinity:host_label: host=host1
-  
+
   redis:
     image: redis
-    labels:
-      io.rancher.scheduler.affinity:host_label: host=host1

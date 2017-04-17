@@ -8,7 +8,7 @@ pipeline {
 
     stages{
         stage('Run tests') {
-            //agent { dockerfile true }
+            agent { dockerfile true }
 
             steps {
                 sh 'echo "Run tests"'
@@ -51,7 +51,7 @@ pipeline {
             }
 
             steps {
-                sh 'rancher-compose --verbose up --upgrade --force-upgrade --pull -d --confirm-upgrade'
+                sh 'rancher-compose -f docker-compose.yml -f docker-compose.prod.yml --verbose up --upgrade --force-upgrade --pull -d --confirm-upgrade'
             }
         }
     }
