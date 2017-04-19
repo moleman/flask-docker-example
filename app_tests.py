@@ -13,7 +13,7 @@ class FlaskrTestCase(unittest.TestCase):
     @patch('app.redis')
     def test_get(self, redis):
         response = self.app.get('/')
-        assert response.data.startswith('Hey!!, we have Flask in a Docker container!')
+        assert response.data.startswith('Hey, we have Flask in a Docker container!')
 
 
 if __name__ == '__main__':
