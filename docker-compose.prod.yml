@@ -2,12 +2,6 @@ version: '2'
 services:
   web:
     image: pdahlstrom/flask-docker-example:latest
-    labels:
-      io.rancher.scheduler.affinity:host_label: host=host1
-  
-  redis:
-    labels:
-      io.rancher.scheduler.affinity:host_label: host=host1
 
   mysql:
     volumes:
