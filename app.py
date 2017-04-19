@@ -1,4 +1,5 @@
 import os
+import random
 
 from flask import Flask
 from redis import Redis
@@ -21,9 +22,19 @@ def hello_world():
     return 'Hey, we have Flask in a Docker container! Host: %s. UPDATE 8! Hits: %s' % \
         (os.environ.get('HOSTNAME'), redis.get('hits'))
 
-@app.route('/versions')
-def users():
+
+@app.route('/insert', methods=['GET'])
+def insert_test():
+    rnd = random.randint(1, 10)
     cur = mysql.connection.cursor()
-    cur.execute('SHOW VARIABLES LIKE "%version%";')
+    cur.execute("INSERT INTO Test VALUES ('%s')" % rnd)
+    mysql.connection.commit()
+    return 'Inserted %s into the database!' % rnd
+
+
+@app.route('/list', methods=['GET'])
+def list_test():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT test FROM Test')
     rv = cur.fetchall()
     return str(rv)
