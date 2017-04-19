@@ -18,7 +18,7 @@ mysql = MySQL(app)
 @app.route('/')
 def hello_world():
     redis.incr('hits')
-    return 'Hey, we have Flask in a Docker container! Host: %s. TEST 7!!!!! Hits: %s' % \
+    return 'Hey, we have Flask in a Docker container! Host: %s. UPDATE 8! Hits: %s' % \
         (os.environ.get('HOSTNAME'), redis.get('hits'))
 
 @app.route('/versions')
