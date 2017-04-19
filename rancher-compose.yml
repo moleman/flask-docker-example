@@ -3,4 +3,12 @@ services:
   web:
     upgrade_strategy:
       start_first: true
-    scale: 2
+    scale: 3
+
+  redis:
+    upgrade_strategy:
+      start_first: true
+  
+  mysql:
+    upgrade_strategy:
+      start_first: true
