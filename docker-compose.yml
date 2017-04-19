@@ -4,9 +4,18 @@ services:
     build: .
     links:
       - redis
+      - mysql
     environment:
       - FLASK_APP=app.py
       - FLASK_HOST=0.0.0.0
 
   redis:
     image: redis
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database

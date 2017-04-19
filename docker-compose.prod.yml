@@ -8,3 +8,10 @@ services:
   redis:
     labels:
       io.rancher.scheduler.affinity:host_label: host=host1
+
+  mysql:
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: host=host1
