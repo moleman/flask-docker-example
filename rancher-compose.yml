@@ -3,7 +3,7 @@ services:
   web:
     upgrade_strategy:
       start_first: true
-    scale: 3
+    scale: 2
 
   redis:
     upgrade_strategy:
